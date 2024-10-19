@@ -47,9 +47,7 @@ class CMSServiceProvider extends ServiceProvider
     protected function configurePublishing()
     {
         $this->publishes([
-            __DIR__.'/../../database/migrations/2014_10_12_000000_create_cms_table.php' => database_path('migrations/2014_10_12_000000_create_cms_table.php'), 
-            __DIR__.'/../../database/migrations/2014_10_13_000000_create_cms_dinas_table.php' => database_path('migrations/2014_10_13_000000_create_cms_dinas_table.php'), 
-            __DIR__.'/../../database/migrations/2014_10_14_000000_create_cms_survei_table.php' => database_path('migrations/2014_10_14_000000_create_cms_survei_table.php')
+            __DIR__.'/../../database/migrations/2014_10_20_000000_create_logs_table.php' => database_path('migrations/2014_10_20_000000_create_logs_table.php')
         ], 'cms-migrations');
     }
 
