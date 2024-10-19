@@ -3,6 +3,8 @@
 namespace Novay\CMS\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
+
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Novay\CMS\Models\Logs\Events;
 use Throwable;
@@ -22,15 +24,17 @@ class SettingServiceProvider extends ServiceProvider
 
     protected function registerSettings()
     {
-        $locale = settings()->group('cms')->get('locale', config('app.locale'));
-        $timezone = settings()->group('cms')->get('timezone', config('app.timezone'));
+        if (Schema::hasTable('settings')) {
+            $locale = settings()->group('cms')->get('locale', config('app.locale'));
+            $timezone = settings()->group('cms')->get('timezone', config('app.timezone'));
 
-        \Illuminate\Support\Facades\App::setLocale($locale);
+            \Illuminate\Support\Facades\App::setLocale($locale);
 
-        config(['app.timezone' => $timezone]);
-        date_default_timezone_set($timezone);
+            config(['app.timezone' => $timezone]);
+            date_default_timezone_set($timezone);
 
-        \Carbon\Carbon::setLocale($locale);
+            \Carbon\Carbon::setLocale($locale);
+        }
     }
 
     protected function registerException()

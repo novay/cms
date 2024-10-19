@@ -41,7 +41,6 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "@php artisan vendor:publish --provider=Novay\\CMS\\Providers\\CMSServiceProvider --force", 
             "@php artisan vendor:publish --provider=Laravel\\Pulse\\PulseServiceProvider", 
             "@php artisan vendor:publish --provider=QCod\\Settings\\SettingsServiceProvider",
             "@php artisan vendor:publish --provider=Venturecraft\\Revisionable\\RevisionableServiceProvider", 
@@ -49,6 +48,8 @@
             "@php artisan vendor:publish --provider=Spatie\\Activitylog\\ActivitylogServiceProvider", 
             "@php artisan vendor:publish --provider=Spatie\\Permission\\PermissionServiceProvider", 
             "@php artisan vendor:publish --provider=Spatie\\Backup\\BackupServiceProvider", 
+            "@php artisan migrate", 
+            "@php artisan vendor:publish --provider=Novay\\CMS\\Providers\\CMSServiceProvider --force", 
             "@php artisan migrate"
         ],
         "post-update-cmd": [
