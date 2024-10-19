@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 20 14.3% 4.1%;
+        --muted: 60 4.8% 95.9%;
+        --muted-foreground: 25 5.3% 44.7%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 20 14.3% 4.1%;
+        --card: 0 0% 100%;
+        --card-foreground: 20 14.3% 4.1%;
+        --border: 20 5.9% 90%;
+        --input: 20 5.9% 90%;
+        --primary: 24 9.8% 10%;
+        --primary-foreground: 60 9.1% 97.8%;
+        --secondary: 60 4.8% 95.9%;
+        --secondary-foreground: 24 9.8% 10%;
+        --accent: 60 4.8% 95.9%;
+        --accent-foreground: 24 9.8% 10%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 60 9.1% 97.8%;
+        --ring: 20 14.3% 4.1%;
+        --radius: 0.5rem;
+
+        --color-accent: 211 243 107;
+        --color-accent-content: 63 66 70;
+        --color-main: 255 255 255;
+        --color-content: 63 66 70;
+        --color-content-dimmed: 172 174 175;
+        --color-content-super-dimmed: 207 208 208;
+        --color-line: 227 228 228;
+        --color-line-dimmed: 245 246 246;
+        --color-line-super-dimmed: 250 251 251;
+        --color-intermediate: 245 246 246;
+        --color-intermediate-content: 63 66 70;
+        --color-intermediate-content-dimmed: 172 174 175;
+        --color-button: 63 66 70;
+        --color-button-content: 255 255 255;
+        --color-button-dimmed: 245 246 246;
+        --color-button-dimmed-content: 63 66 70;
+        --color-button-accent: var(--color-accent);
+        --color-button-accent-content: var(--color-accent-content);
+        --color-gradient-from: 231 255 155;
+        --color-gradient-to: 207 230 255;
+        --color-gradient-content: 63 66 70;
+        --color-info: 0 166 251;
+        --color-success: 48 200 98;
+        --color-failure: 254 81 87;
+        --color-alert: 254 212 73;
+    }
+    
+    .dark {
+        --background: 20 14.3% 4.1%;
+        --foreground: 60 9.1% 97.8%;
+        
+        --muted: 12 6.5% 15.1%;
+        --muted-foreground: 24 5.4% 63.9%;
+        
+        --popover: 20 14.3% 4.1%;
+        --popover-foreground: 60 9.1% 97.8%;
+        
+        --card: 20 14.3% 4.1%;
+        --card-foreground: 60 9.1% 97.8%;
+        
+        --border: 12 6.5% 15.1%;
+        --input: 12 6.5% 15.1%;
+        
+        --primary: 60 9.1% 97.8%;
+        --primary-foreground: 24 9.8% 10%;
+        
+        --secondary: 12 6.5% 15.1%;
+        --secondary-foreground: 60 9.1% 97.8%;
+        
+        --accent: 12 6.5% 15.1%;
+        --accent-foreground: 60 9.1% 97.8%;
+        
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 60 9.1% 97.8%;
+        
+        --ring: 24 5.7% 82.9%;
+    }
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  height: 100%;
+  padding: 0;
+  overflow: auto;
+  margin: 0;
+  -webkit-overflow-scrolling: touch;
+  letter-spacing: -.22px;
+}
+
+@keyframes slide-in-from-left {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+@keyframes slide-out-to-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.shape-1 {
+  animation: hero-thumb-animation 2s linear infinite alternate;
+}
+
+@keyframes hero-thumb-animation {
+    0% {
+      transform: translateY(-20px);
+    }
+    to {
+      transform: translateY(0);
+    }
+}
+
+.dark input::-webkit-calendar-picker-indicator {
+  filter: invert(100%);
+}
+
+.button {
+    display: inline-flex;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    white-space: nowrap;
+    border-radius: 0;
+    --tw-bg-opacity: 1;
+    background-color: rgb(var(--color-button) / var(--tw-bg-opacity));
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+    --tw-text-opacity: 1;
+    color: rgb(var(--color-button-content) / var(--tw-text-opacity));
+    outline-width: 1px;
+    outline-offset: 2px;
+    outline-color: rgb(var(--color-button) / 1);
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .15s;
+}
+
+.button:hover {
+  outline-style: solid;
+}
+
+.bg-content {
+  --tw-bg-opacity: 1;
+  background-color: rgb(var(--color-content) / var(--tw-bg-opacity));
+}
+
+.text-main {
+  --tw-text-opacity: 1;
+  color: rgb(var(--color-main) / var(--tw-text-opacity));
+}
+
+.font-square {
+    font-family: Clarkson, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.menu-title {
+    margin-top: 6px;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    color: rgb(14, 14, 14);
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 28px;
+}
