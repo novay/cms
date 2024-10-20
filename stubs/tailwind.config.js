@@ -7,6 +7,7 @@ module.exports = {
         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
         "./vendor/protonemedia/laravel-splade/lib/**/*.vue",
         "./vendor/protonemedia/laravel-splade/resources/views/**/*.blade.php",
+        "./vendor/novay/cms/resources/views/**/*.blade.php",
         "./storage/framework/views/*.php",
         "./resources/views/**/*.blade.php",
         "./resources/js/**/*.vue", 

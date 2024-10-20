@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function index(Request $request)
     {
-        return view("cms::index");
+        return view('cms::index');
     }
 
     public function about(Request $request)

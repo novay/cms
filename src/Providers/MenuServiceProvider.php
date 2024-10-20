@@ -26,13 +26,18 @@ class MenuServiceProvider extends ServiceProvider
             $view->with('mContent', []);
             $view->with('mPlugins', []);
 
+            $themes = count(themes()) ? true : false;
             $view->with('mSettings', [ 
-                app('menu')->title(__('novay/cms::menu.navigation_menu'))->submenu(function($menu) {
+                app('menu')->title(__('novay/cms::menu.navigation_menu'))->submenu(function($menu) use($themes) {
                     $menu->title(__('novay/cms::menu.general_settings'))
                         ->description(__('novay/cms::menu.general_settings_description'))
                         ->routeSubmenu('cms::settings.sites.index');
+                    $menu->title(__('novay/cms::menu.theme_selector'))
+                        ->enable($themes)
+                        ->description(__('novay/cms::menu.theme_selector_description'))
+                        ->routeSubmenu('cms::settings.themes.index');
                     $menu->title(__('novay/cms::menu.maintenance'))
-                        ->enable(shell_exec('composer show nue-template/*-theme'))
+                        ->enable($themes)
                         ->description(__('novay/cms::menu.maintenance_description'))
                         ->routeSubmenu('cms::settings.maintenance.index');
                 }), 

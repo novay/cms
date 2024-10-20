@@ -11,6 +11,7 @@ class CMSServiceProvider extends ServiceProvider
     {
         $this->registerMiddleware();
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'cms');
+        $this->loadRoutesFrom(__DIR__.'/../../routes/api.php');
         $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
 
         $this->registerConfig();
@@ -34,6 +35,7 @@ class CMSServiceProvider extends ServiceProvider
     protected function registerMiddleware()
     {
         $this->app['router']->aliasMiddleware('theme', \Novay\CMS\Http\Middleware\CheckThemeInstalled::class);
+        $this->app['router']->aliasMiddleware('maintenance', \Novay\CMS\Http\Middleware\Maintenance::class);
         $this->app['router']->pushMiddlewareToGroup('web', \Novay\CMS\Http\Middleware\LogRequest::class);
     }
 

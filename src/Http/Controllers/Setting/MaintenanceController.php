@@ -4,6 +4,7 @@ namespace Novay\CMS\Http\Controllers\Setting;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use ProtoneMedia\Splade\Facades\Splade;
 
 class MaintenanceController extends Controller
 {
@@ -11,7 +12,7 @@ class MaintenanceController extends Controller
 
     public function __construct()
     {
-        $this->title = ___('Maintenance');
+        $this->title = __('novay/cms::menu.maintenance');
         
         $this->prefix = 'cms::settings.maintenance';
         $this->view = 'cms::settings';
@@ -30,6 +31,15 @@ class MaintenanceController extends Controller
     
     public function store(Request $request)
     {
-        return dd($request->all());
+        $input = $request->validate([
+            'maintenance' => 'nullable',
+            'maintenance_note' => 'required_if:maintenance,1'
+        ]);
+
+        settings()->group('cms')->set('maintenance', $input['maintenance']);
+        settings()->group('cms')->set('maintenance_note', $input['maintenance_note']);
+
+        Splade::toast('Status maintenance berhasil diperbarui.');
+        return redirect()->back();
     }
 }

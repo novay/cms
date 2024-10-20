@@ -66,70 +66,85 @@
                                     </CardTitle>
                                 </CardHeader>
                                 <CardContent class="p-0">
-                                    <div class="py-1.5 px-3 flex justify-between items-center">
-                                        <div class="flex items-center gap-1 text-lime-600">
-                                            <Icon icon="mingcute:check-circle-fill" class="w-5 h-5" />
-                                            <span>Software is Up to Date</span>
+                                    <x-splade-defer url="{{ route('cms::api.system-status') }}">
+                                        <p v-show="processing" class="text-center py-3">Loading data...</p>
+                                        
+                                        <div class="py-1.5 px-3 flex justify-between items-center">
+                                            <div class="flex items-center gap-1 text-lime-600">
+                                                <Icon icon="mingcute:check-circle-fill" class="w-5 h-5" />
+                                                <span>Software is Up to Date</span>
+                                            </div>
+                                            {{-- <div>
+                                                Update
+                                            </div> --}}
                                         </div>
-                                        {{-- <div>
-                                            Update
-                                        </div> --}}
-                                    </div>
-                                    <Separator />
+                                        <Separator />
 
-                                    <div class="py-1.5 px-3 flex justify-between items-center">
-                                        <div class="flex items-center gap-1 text-yellow-600">
-                                            <Icon icon="mingcute:safe-alert-fill" class="w-5 h-5" />
-                                            <span>Some Issues Need Attention</span>
-                                        </div>
-                                        <Link href="" class="text-sm border rounded-full py-0.5 px-2.5 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-white transition">
-                                            View
-                                        </Link>
-                                    </div>
-                                    <Separator />
+                                        <div class="py-1.5 px-3 flex justify-between items-center">
+                                            <div class="flex items-center gap-1 text-yellow-600">
+                                                <Icon icon="mingcute:safe-alert-fill" class="w-5 h-5" />
+                                                <span>Some Issues Need Attention</span>
 
-                                    <div class="py-1.5 px-3 flex justify-between items-center">
-                                        <div class="flex items-center gap-1 text-stone-500">
-                                            <Icon icon="mingcute:information-fill" class="w-5 h-5" />
-                                            <span>System Build</span>
+                                                {{-- <Icon icon="mingcute:check-circle-fill" class="w-5 h-5" /> --}}
+                                                {{-- No Warnings to Display --}}
+                                            </div>
+                                            <Link href="" class="text-sm border rounded-full py-0.5 px-2.5 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-white transition">
+                                                View
+                                            </Link>
                                         </div>
-                                        <Link href="" class="text-sm border rounded-full py-0.5 px-2.5 border-stone-300 text-stone-500 hover:bg-stone-500 hover:text-white transition">
-                                            v1.0.0
-                                        </Link>
-                                    </div>
-                                    <Separator />
+                                        <Separator />
 
-                                    <div class="py-1.5 px-3 flex justify-between items-center">
-                                        <div class="flex items-center gap-1 text-stone-500">
-                                            <Icon icon="mingcute:alert-line" class="w-5 h-5" />
-                                            <span>Event Log</span>
+                                        <div class="py-1.5 px-3 flex justify-between items-center">
+                                            <div class="flex items-center gap-1 text-stone-500">
+                                                <Icon icon="mingcute:information-fill" class="w-5 h-5" />
+                                                <span>System Build</span>
+                                            </div>
+                                            <Link href="{{ route('cms::settings.updates.index') }}" class="text-sm border rounded-full py-0.5 px-2.5 border-stone-300 text-stone-500 hover:bg-stone-500 hover:text-white transition">
+                                                <span v-text="response.version"></span>
+                                            </Link>
                                         </div>
-                                        <Link href="" class="text-sm border rounded-full py-0.5 px-2.5 border-stone-300 text-stone-500 hover:bg-stone-500 hover:text-white transition">
-                                            0
-                                        </Link>
-                                    </div>
-                                    <Separator />
+                                        <Separator />
 
-                                    <div class="py-1.5 px-3 flex justify-between items-center">
-                                        <div class="flex items-center gap-1 text-stone-500">
-                                            <Icon icon="mingcute:file-line" class="w-5 h-5" />
-                                            <span>Request Log</span>
+                                        <div class="py-1.5 px-3 flex justify-between items-center">
+                                            <div class="flex items-center gap-1 text-stone-500">
+                                                <Icon icon="mingcute:alert-line" class="w-5 h-5" />
+                                                <span>Event Log</span>
+                                            </div>
+                                            <Link href="{{ route('cms::settings.logs.events.index') }}" class="text-sm border rounded-full py-0.5 px-2.5 border-stone-300 text-stone-500 hover:bg-stone-500 hover:text-white transition">
+                                                <span v-text="response.events_count"></span>
+                                            </Link>
                                         </div>
-                                        <Link href="" class="text-sm border rounded-full py-0.5 px-2.5 border-stone-300 text-stone-500 hover:bg-stone-500 hover:text-white transition">
-                                            0
-                                        </Link>
-                                    </div>
-                                    <Separator />
+                                        <Separator />
 
-                                    <div class="py-1.5 px-3 flex justify-between items-center">
-                                        <div class="flex items-center gap-1 text-stone-500">
-                                            <Icon icon="mingcute:calendar-2-line" class="w-5 h-5" />
-                                            <span>Online Since</span>
+                                        <div class="py-1.5 px-3 flex justify-between items-center">
+                                            <div class="flex items-center gap-1 text-stone-500">
+                                                <Icon icon="mingcute:file-line" class="w-5 h-5" />
+                                                <span>Request Log</span>
+                                            </div>
+                                            <Link href="{{ route('cms::settings.logs.requests.index') }}" class="text-sm border rounded-full py-0.5 px-2.5 border-stone-300 text-stone-500 hover:bg-stone-500 hover:text-white transition">
+                                                <span v-text="response.requests_count"></span>
+                                            </Link>
                                         </div>
-                                        <div class="text-sm py-0.5 px-2.5 text-stone-500">
-                                            Oktober 1, 2024
+                                        <Separator />
+
+                                        <div class="py-1.5 px-3 flex justify-between items-center">
+                                            <div class="flex items-center gap-1 text-stone-500">
+                                                <Icon icon="mingcute:calendar-2-line" class="w-5 h-5" />
+                                                <span>Online Since</span>
+                                            </div>
+                                            <div class="text-sm py-0.5 px-2.5 text-stone-500">
+                                                <span v-text="response.register_date"></span>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <Separator />
+
+                                        <div class="flex items-center gap-2 p-3 text-xs text-stone-500">
+                                            <span v-text="response.time"></span>
+                                            <x-cms::link @click.prevent="reload" class="text-xs">
+                                                Refresh
+                                            </x-cms::link>
+                                        </div>
+                                    </x-splade-defer>
                                 </CardContent>
                             </Card>
                         </div>
@@ -140,8 +155,8 @@
                                         Website
                                     </CardTitle>
                                 </CardHeader>
-                                <CardContent>
-                                    @if(empty(shell_exec('composer show nue-template/*-theme')))
+                                <CardContent class="pb-0">
+                                    @if(!active_theme())
                                         <div class="border border-dashed rounded-lg py-10 px-6 text-center">
                                             <Icon icon="line-md:download-off-loop" class="w-28 h-28 mx-auto text-stone-500/20" />
                                             <h1 class="text-lg font-bold mb-1">
@@ -153,26 +168,39 @@
                                             </p>
                                             <pre class="font-bold tracking-tight">composer require nue-template/default-theme</pre>
                                         </div>
+                                    @else 
+                                        <img src="https://octobercms.test/themes/demo/assets/images/theme-preview.png" alt="">
                                     @endif
-                                    {{-- <img src="https://octobercms.test/themes/demo/assets/images/theme-preview.png" alt=""> --}}
                                 </CardContent>
-                                <CardFooter class="pt-0 pb-4">
-                                    @if(empty(shell_exec('composer show nue-template/*-theme')))
+                                <CardFooter class="pt-2 pb-4">
+                                    @if(!active_theme())
                                         <div class="inline-flex items-center">
                                             <span class="size-2 inline-block bg-red-500 rounded-full me-2 dark:bg-neutral-500"></span>
-                                            <span class="text-red-600 dark:text-neutral-400">Not installed</span>
+                                            <span class="text-red-600 dark:text-neutral-400 text-sm">Not installed</span>
+                                        </div>
+                                    @else 
+                                        <div class="flex items-center gap-3">
+                                            @if(settings()->group('cms')->get('maintenance', 0) == 1)
+                                                <Link href="{{ route('cms::settings.maintenance.index') }}" class="inline-flex items-center">
+                                                    <span class="size-2 inline-block bg-yellow-500 rounded-full me-2 dark:bg-neutral-500"></span>
+                                                    <span class="text-yellow-600 dark:text-neutral-400 text-sm">Maintenance</span>
+                                                </Link>
+                                            @else 
+                                                <div class="inline-flex items-center">
+                                                    <span class="size-2 inline-block bg-green-500 rounded-full me-2 dark:bg-neutral-500"></span>
+                                                    <span class="text-green-600 dark:text-neutral-400 text-sm">Online</span>
+                                                </div>
+                                            @endif
+                                            
+                                            <span>Manage Theme</span>
                                         </div>
                                     @endif
-                                    
-                                    {{-- Manage Theme --}}
                                 </CardFooter>
                             </Card>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
-
     </div>
 </x-cms-layout>

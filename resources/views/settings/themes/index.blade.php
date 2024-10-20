@@ -7,20 +7,23 @@
     <ResizablePanelGroup id="content-group-1" direction="horizontal">
         <ResizablePanel id="content-panel-1" :default-size="60" class="overflow-hidden">
             <x-splade-form action="{{ route($prefix.'.store') }}" class="flex flex-col h-[calc(100vh_-_75px)]" :default="[
-                'maintenance' => settings()->group('cms')->get('maintenance'), 
-                'maintenance_note' => settings()->group('cms')->get('maintenance_note')
+                'theme' => settings()->group('cms')->get('theme', config('cms.theme')), 
             ]">
                 <ScrollArea class="flex-1">
                     <div class="px-4 bg-yellow-500 text-white text-sm p-3" role="alert" tabindex="-1">
-                        Maintenance mode will display the maintenance page to visitors who are not signed in to the back-end area.
+                        Theme selector will display the theme selector to visitors who are not signed in to the back-end area.
                     </div>
-                    <div class="p-4 space-y-6">
-                        <x-splade-checkbox name="maintenance" value="1">
-                            <p class="font-semibold">Enable maintenance mode</p>
-                        </x-splade-checkbox>
-                        <div v-if="form.maintenance == '1'">
-                            <x-splade-textarea name="maintenance_note" :label="__('Maintenance Note')" data-required :placeholder="__('Contoh: Website kami sedang dalam masa perawatan.')" rows="3" autosize />
-                        </div>
+
+                    <div class="p-6">
+                        <x-splade-group name="theme" label="Theme Selector" inline>
+                            @foreach(themes() as $i => $temp)
+                                <div class="rounded border p-2">
+                                    <x-splade-radio name="theme" value="{{ $i }}">
+                                        {{ $temp['name'] }}
+                                    </x-splade-radio>
+                                </div>
+                            @endforeach
+                        </x-splade-group>
                     </div>
                 </ScrollArea>
                 <div class="p-4 flex items-center gap-3">

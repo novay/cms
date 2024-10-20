@@ -30,6 +30,7 @@ Route::middleware(['splade', 'web'])->group(function()
         Route::prefix('settings')->as('settings.')->group(function() {
             Route::get('/', [Controllers\Setting\IndexController::class, 'index'])->name('index');
             Route::resource('sites', Controllers\Setting\SiteController::class)->only(['index', 'store']);
+            Route::resource('themes', Controllers\Setting\ThemeController::class)->only(['index', 'store']);
             Route::resource('maintenance', Controllers\Setting\MaintenanceController::class)->only(['index', 'store']);
 
             Route::prefix('logs')->as('logs.')->group(function() {

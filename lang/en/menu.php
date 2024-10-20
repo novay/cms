@@ -8,6 +8,8 @@ return
     'navigation_menu' => 'Navigation Menu', 
     'general_settings' => 'General Settings',
     'general_settings_description' => 'Manage the websites available for this application.',
+    'theme_selector' => 'Theme Selector',
+    'theme_selector_description' => 'Select the theme to be used on the website or landing page.',
     'maintenance' => 'Maintenance',
     'maintenance_description' => 'Configure the maintenance mode page and toggle the setting.',
 

@@ -31,7 +31,8 @@
             "providers": [
                 "Novay\\CMS\\Providers\\CMSServiceProvider", 
                 "Novay\\CMS\\Providers\\MenuServiceProvider", 
-                "Novay\\CMS\\Providers\\SettingServiceProvider"
+                "Novay\\CMS\\Providers\\SettingServiceProvider", 
+                "Novay\\CMS\\Providers\\ThemeServiceProvider"
             ], 
             "alias": {
                 "CMSController": "Novay\\CMS\\CMSController"

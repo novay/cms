@@ -2,9 +2,38 @@
 
 use Composer\InstalledVersions;
 
-if(!function_exists('package')) {
-    function package($package) {
-        return InstalledVersions::isInstalled($package);
+if(!function_exists('themes')) {
+    function themes() {
+        $composerLockPath = base_path('composer.lock');
+        $composerData = json_decode(\File::get($composerLockPath), true);
+
+        $themes = [];
+        foreach ($composerData['packages'] as $package) {
+            if (str_starts_with($package['name'], 'nue-template/')) {
+
+                $themeDir = base_path('vendor/' . $package['name']);
+                $themeJsonPath = $themeDir . '/theme.json';
+
+                if (\File::exists($themeJsonPath)) {
+                    $themeData = json_decode(\File::get($themeJsonPath), true);
+
+                    $themes[str_replace('nue-template/', '', $package['name'])] = [
+                        'name' => $themeData['name'] ?? $package['name'],
+                        'description' => $themeData['description'] ?? 'No description provided',
+                        'author' => $themeData['author'] ?? 'Unknown',
+                        'screenshot' => $themeData['screenshot'] ?? 'screenshot.png'
+                    ];
+                }
+            }
+        }
+
+        return $themes;
+    }
+}
+
+if(!function_exists('active_theme')) {
+    function active_theme() {
+        return settings()->group('cms')->get('theme', config('cms.theme'));
     }
 }
 

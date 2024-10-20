@@ -8,6 +8,8 @@ return
     'navigation_menu' => 'Menu Navigasi',
     'general_settings' => 'Pengaturan Umum',
     'general_settings_description' => 'Kelola situs web yang tersedia untuk aplikasi ini.',
+    'theme_selector' => 'Pilih tema',
+    'theme_selector_description' => 'Pilih tema yang akan digunakan di situs web ini.',
     'maintenance' => 'Pemeliharaan',
     'maintenance_description' => 'Konfigurasikan halaman mode pemeliharaan dan alihkan pengaturan.',
     

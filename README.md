@@ -11,7 +11,9 @@ laravel new laravel-cms
 
 cd laravel-cms
 
-composer require novay/cms && php artisan boilerplate:install
+composer require novay/cms && composer require laravel/sanctum
+
+php artisan boilerplate:install
 
 php artisan vendor:publish --provider="Novay\Boilerplate\BoilerplateServiceProvider" --tag="config" &&
 php artisan vendor:publish --provider=QCod\\Settings\\SettingsServiceProvider &&
@@ -22,3 +24,13 @@ php artisan vendor:publish --provider=Spatie\\Permission\\PermissionServiceProvi
 php artisan vendor:publish --provider=Spatie\\Backup\\BackupServiceProvider &&
 php artisan vendor:publish --provider=Novay\\CMS\\Providers\\CMSServiceProvider --force &&
 php artisan migrate
+
+npm install 
+npm run dev
+
+
+
+.env 
+
+SCOUT_DRIVER=database
+RESEND_API_KEY=
