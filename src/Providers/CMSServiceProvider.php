@@ -69,7 +69,7 @@ class CMSServiceProvider extends ServiceProvider
             __DIR__ . '/../../stubs/resources/js/components' => resource_path('js/components'),
             __DIR__ . '/../../stubs/resources/js/lib' => resource_path('js/lib'),
             
-            __DIR__ . '/../../stubs/resources/views/root.php' => resource_path('views/root.php'),
+            __DIR__ . '/../../stubs/resources/views/root.php' => resource_path('views/root.blade.php'),
             __DIR__ . '/../../stubs/resources/views/components' => resource_path('views/components'),
             __DIR__ . '/../../stubs/resources/views/vendor' => resource_path('views/vendor'),
 

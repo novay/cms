@@ -1,9 +1,17 @@
 # cms
  
 
-composer require novay/cms
+laravel new laravel-cms
+- Would you like to install a starter kit? : No starter kit
+- Which testing framework do you prefer? : Pest 
+- Would you like to initialize a Git repository? : No
+- []
+- Which database will your application use? : SQLite
+- Would you like to run the default database migrations? : Yes
 
-php artisan boilerplate:install
+cd laravel-cms
+
+composer require novay/cms && php artisan boilerplate:install
 
 php artisan vendor:publish --provider="Novay\Boilerplate\BoilerplateServiceProvider" --tag="config" &&
 php artisan vendor:publish --provider=QCod\\Settings\\SettingsServiceProvider &&
