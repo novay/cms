@@ -7,7 +7,7 @@
                 'log_events' => settings()->group('cms')->get('log_events'), 
             ]">
                 <ScrollArea class="flex-1">
-                    <div class="m-3">
+                    <div class="m-2">
                         <div class="py-2 px-2.5 text-stone-100 bg-stone-700 text-sm rounded">
                             Specify which areas should use logging.
                         </div>

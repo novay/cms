@@ -3,7 +3,9 @@
 
 composer require novay/cms
 
-php artisan vendor:publish --provider=Laravel\\Pulse\\PulseServiceProvider &&
+php artisan boilerplate:install
+
+php artisan vendor:publish --provider="Novay\Boilerplate\BoilerplateServiceProvider" --tag="config" &&
 php artisan vendor:publish --provider=QCod\\Settings\\SettingsServiceProvider &&
 php artisan vendor:publish --provider=Venturecraft\\Revisionable\\RevisionableServiceProvider &&
 php artisan vendor:publish --provider=Cviebrock\\EloquentSluggable\\ServiceProvider &&
