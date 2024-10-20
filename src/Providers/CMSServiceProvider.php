@@ -74,6 +74,7 @@ class CMSServiceProvider extends ServiceProvider
             __DIR__ . '/../../stubs/resources/views/vendor' => resource_path('views/vendor'),
 
             __DIR__ . '/../../stubs/models/User.php' => base_path('app/Models/User.php'),
+            __DIR__ . '/../../stubs/routes/web.php' => base_path('routes/web.php'),
         ], 'cms-package');
     }
 
